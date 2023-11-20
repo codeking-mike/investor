@@ -1,8 +1,10 @@
 <?php
 
+use App\Models\Support;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\DepositController;
 use App\Http\Controllers\InvestmentController;
@@ -36,6 +38,9 @@ Route::put('/deposit/{id}', [DepositController::class, 'update']);
 Route::post('/register', [HomeController::class, 'create']);
 Route::post('/login', [HomeController::class, 'authenticate']);
 Route::get('/logout', [HomeController::class, 'logout']);
+Route::get('/history', [HomeController::class, 'history'])->middleware('auth');
+Route::get('/notification', [HomeController::class, 'notification'])->middleware('auth');
+Route::get('/support', [HomeController::class, 'support'])->middleware('auth');
 
 //user dashboard
 Route::get('/account', [AccountController::class, 'index'])->middleware('auth');
@@ -57,7 +62,8 @@ Route::get('/user/profile', [UserController::class, 'index'])->middleware('auth'
 Route::put('/profile/{id}', [UserController::class, 'update'])->middleware('auth');
 Route::put('/complete/{id}', [UserController::class, 'complete'])->middleware('auth');
 
+Route::get('/complete', [UserController::class, 'show'])->middleware('auth');
 
 
-
+Route::get('/admin', [AdminController::class, 'index'])->middleware('auth');
 

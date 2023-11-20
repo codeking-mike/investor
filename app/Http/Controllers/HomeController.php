@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\History;
+use App\Models\Support;
 use App\Models\User;
 use App\Models\Account;
 use Illuminate\Http\Request;
@@ -37,6 +39,25 @@ class HomeController extends Controller
     public function login(){
         return view("login",[
             "title"=>"Bonretours :: Account Login"
+        ]);
+    }
+
+    public function history(){
+        return view("history.index",[
+            "title"=>"Bonretours :: Account History",
+            'history'=> History::where('user_id', auth()->user()->id)->orderBy('created_at','desc')->get()
+        ]);
+    }
+    public function notification(){
+        return view("history.notify",[
+            "title"=>"Bonretours :: Account Notification",
+            'support'=> Support::where('receiver', 'all')->orderBy('created_at','desc')->get()
+        ]);
+    }
+
+    public function support(){
+        return view("history.create ",[
+            "title"=>"Bonretours :: Account Support"
         ]);
     }
 
@@ -83,7 +104,13 @@ class HomeController extends Controller
 
         if(auth()->attempt($formFields)){
             $request->session()->regenerate();
+
+            if(auth()->user()->role == 'admin'){
             
+           
+                    return redirect('/admin');
+            }else{
+
             $num = User::where('referal_id','=', auth()->user()->id)->count();
             $user = User::find(auth()->user()->id);
 
@@ -99,7 +126,11 @@ class HomeController extends Controller
             }
             $user->save();
             return redirect('/account');
+
+
+            }
         }
+    
 
         return back()->withErrors(['email'=> 'Invalid Credentials'])->onlyInput('email');
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\History;
 use App\Models\Investment;
 use App\Models\Withdrawals;
 use Illuminate\Http\Request;
@@ -16,7 +17,7 @@ class WithdrawalController extends Controller
         ]);
     }
 
-    public function create(Request $request, Withdrawals $with){
+    public function create(Request $request, Withdrawals $with, History $history){
         $formFields = $request->validate([
             'amount'=> ['required', 'numeric' ],
             'user_id'=> ['required']
@@ -36,13 +37,18 @@ class WithdrawalController extends Controller
               $user = User::find(auth()->user()->id);
               $user->balance = $user->balance - $request->amount;
               $user->update();
+
+              $history->user_id = auth()->user()->id;
+        $history->description = 'Made a Withdrawal of '. $formFields['amount'];
+        $history->save();
+
               return back()->with('success','Withdrawal successful. Kindly wait for payment in your account');
 
 
          }
     }
 
-    public function bonus(Withdrawals $with){
+    public function bonus(Withdrawals $with, History $history){
         
         $inv = Investment::where('user_id', auth()->user()->id)->count();
         if($inv === 0){
@@ -65,6 +71,10 @@ class WithdrawalController extends Controller
                     $user = User::find(auth()->user()->id);
                     $user->bonus = 0.00;
                     $user->update();
+
+                    $history->user_id = auth()->user()->id;
+                    $history->description = 'Made a Bonus Withdrawal of '.auth()->user()->bonus;
+                    $history->save();
                     return back()->with('success','Withdrawal successful. Kindly wait for payment in your account');
 
 

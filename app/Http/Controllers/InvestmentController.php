@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Account;
 use App\Models\Deposit;
+use App\Models\History;
 use App\Models\Investment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -19,7 +20,7 @@ class InvestmentController extends Controller
         ]);
     }
 
-    public function prem(Request $request, Investment $investment){
+    public function prem(Request $request, Investment $investment, History $history){
         $formFields = $request->validate([
             'amount'=> ['required','numeric'],
             'user_id'=> ['nullable']
@@ -91,6 +92,9 @@ class InvestmentController extends Controller
         $user->update();
 
     }
+        $history->user_id = auth()->user()->id;
+        $history->description = 'Made an Investment of '. $formFields['amount'];
+        $history->save();
 
         return back()->with('success','Congratulations! Your Investment was successful !');
 
@@ -99,7 +103,7 @@ class InvestmentController extends Controller
 
     }
 
-    public function begin(Request $request, Investment $investment){
+    public function begin(Request $request, Investment $investment, History $history){
         $formFields = $request->validate([
             'amount'=> ['required','numeric'],
             'user_id'=> ['nullable']
@@ -177,7 +181,10 @@ class InvestmentController extends Controller
 
         }
          
- 
+        $history->user_id = auth()->user()->id;
+        $history->description = 'Made an Investment of '. $formFields['amount'];
+        $history->save();
+
          return back()->with('success','Congratulations! Your Investment was successful');
  
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\History;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
@@ -23,7 +24,7 @@ class UserController extends Controller
     }
 
 
-    public function update(Request $request, $id){
+    public function update(Request $request, $id, History $history){
         $user = User::find($id);
         $formFields = $request->validate([
             'firstname'=> ['required', 'min:3' ],
@@ -47,10 +48,14 @@ class UserController extends Controller
 
         $user->update();
 
+        $history->user_id = auth()->user()->id;
+        $history->description = ' Profile updated successfully ';
+        $history->save();
+
         return back()->with('success','Profile updated successfully');
     }
 
-    public function complete(Request $request, $id){
+    public function complete(Request $request, $id,  History $history){
         $user = User::find($id);
         $formFields = $request->validate([
             
@@ -66,6 +71,10 @@ class UserController extends Controller
         $user->country = $formFields['country'];
 
         $user->update();
+
+        $history->user_id = auth()->user()->id;
+        $history->description = ' Profile updated successfully ';
+        $history->save();
         
         return redirect('/account')->with('success','Profile updated successfully');
     }

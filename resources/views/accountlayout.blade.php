@@ -107,7 +107,7 @@ function copyLink2() {
             </a>
           </li>
            <li class="nav-item">
-            <a class="nav-link" href="/withdraw">
+            <a class="nav-link" href="/notification">
               <i class="tim-icons icon-bell-55"></i>
               <span class="menu-title">Notifications</span>
             </a>
