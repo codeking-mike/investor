@@ -148,7 +148,7 @@ function copyLink2() {
             <a class="navbar-brand" href="javascript:void(0)"></a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-expanded="false" aria-label="Toggle navigation">
-          <img src="{{asset('assets2/img/uchain-logo.png')}}" width="35" height="35" alt="Profile Photo"><span class="text-white">Uchaincoins</span>
+          <img src="{{asset('assets2/img/bonretours.jpg')}}" width="50" height="50" alt="Profile Photo"><span class="text-white"></span>
           </button>
           <div class="collapse navbar-collapse" id="navigation">
             <ul class="navbar-nav ml-auto">

@@ -46,6 +46,7 @@ class InvestmentController extends Controller
         $investment->profits = $dprofit;
         $investment->earnings = $earnings;
         $investment->maturity = $maturity;
+        $investment->name =  auth()->user()->firstname. " ".auth()->user()->lastname;
         $investment->completed = 'no';
         $investment->save();
 
@@ -84,6 +85,7 @@ class InvestmentController extends Controller
         $investment->profits = $dprofit;
         $investment->earnings = $earnings;
         $investment->maturity = $maturity;
+        $investment->name = auth()->user()->firstname. " ".auth()->user()->lastname;
         $investment->completed = 'no';
         $investment->save();
 
@@ -131,6 +133,7 @@ class InvestmentController extends Controller
         $investment->profits = $dprofit;
         $investment->earnings = $earnings;
         $investment->maturity = $maturity;
+        $investment->name =  auth()->user()->firstname. " ".auth()->user()->lastname;
         $investment->completed = 'no';
         $investment->save();
  
@@ -171,6 +174,7 @@ class InvestmentController extends Controller
             $investment->profits = $dprofit;
             $investment->earnings = $earnings;
             $investment->maturity = $maturity;
+            $investment->name =  auth()->user()->firstname. " ".auth()->user()->lastname;
             $investment->completed = 'no';
             $investment->save();
      

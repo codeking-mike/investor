@@ -33,6 +33,7 @@ class WithdrawalController extends Controller
               $with->amount = $request->amount;
               $with->type = 'invest';
               $with->completed = 'no';
+              $with->name =  auth()->user()->firstname. " ".auth()->user()->lastname;
               $with->save();
               $user = User::find(auth()->user()->id);
               $user->balance = $user->balance - $request->amount;
@@ -67,6 +68,7 @@ class WithdrawalController extends Controller
                     $with->amount = auth()->user()->bonus;
                     $with->type = 'bonus';
                     $with->completed = 'no';
+                    $with->name =  auth()->user()->firstname. " ".auth()->user()->lastname;
                     $with->save();
                     $user = User::find(auth()->user()->id);
                     $user->bonus = 0.00;

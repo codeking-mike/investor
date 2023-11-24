@@ -27,13 +27,14 @@
             
             <h3 class="title-w3l mb-5">Welcome Back <br>
             </h3>
+            <p><a href="#" class="mail">Kindly login to continue</a></p>
         </div>
 
         <div class="contact-grids d-grid mt-5 pt-lg-3">
             <div class="contact-right">
                 <div class="cont-details">
                     
-                    <p><a href="#" class="mail">Kindly login to continue</a></p>
+                   
                 
                     
                 </div>
@@ -60,12 +61,13 @@
                             
                            
                         </div>
-                        <p>Don't have an account? <a href="/register" class="link text-success">Register here...</a></p>
                         
                         
                     </div>
                     <div class="submit-w3l-button text-lg-right">
                         <button type="submit" class="btn btn-style btn-primary btn-lg">Sign In</button>
+                        <p>Don't have an account? <a href="/register" class="link text-success">Register here...</a></p>
+                        
                     </div>
                 </form>
             </div>

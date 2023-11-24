@@ -66,4 +66,25 @@ Route::get('/complete', [UserController::class, 'show'])->middleware('auth');
 
 
 Route::get('/admin', [AdminController::class, 'index'])->middleware('auth');
+Route::get('/users', [AdminController::class, 'users'])->middleware('auth');
+Route::get('/edituser/{id}', [AdminController::class, 'edituser'])->middleware('auth');
+Route::get('/deleteuser/{id}', [AdminController::class, 'delete']);
+Route::get('/switch/{id}', [AdminController::class, 'switchuser']);
+Route::put('/updateuser/{id}', [AdminController::class, 'updateuser'])->middleware('auth');
+Route::get('/admin/deposit', [AdminController::class, 'deposit'])->middleware('auth');
+Route::get('/deletedeposit/{id}', [AdminController::class, 'deletedeposit']);
+Route::get('/viewpop/{id}', [AdminController::class, 'viewpop'])->middleware('auth');
+Route::get('/confirm/{id}', [AdminController::class, 'confirm']);
+Route::get('/admin/invest', [AdminController::class, 'invest'])->middleware('auth');
+Route::get('/viewinvest/{id}', [AdminController::class, 'viewinvest'])->middleware('auth');
+Route::put('/updateinvest/{id}', [AdminController::class, 'updateinvest'])->middleware('auth');
+Route::get('/deleteinvest/{id}', [AdminController::class, 'deleteinvest']);
+Route::get('/admin/withdrawal', [AdminController::class, 'withdrawal'])->middleware('auth');
+Route::get('/viewwithdrawal/{id}', [AdminController::class, 'viewwithdrawal'])->middleware('auth');
+Route::get('/complete/{id}', [AdminController::class, 'complete'])->middleware('auth');
+
+Route::get('/admin/bonus', [AdminController::class, 'bonus'])->middleware('auth');
+Route::get('/viewbonus/{id}', [AdminController::class, 'viewbonus'])->middleware('auth');
+Route::get('/completebonus/{id}', [AdminController::class, 'completebonus'])->middleware('auth');
+
 

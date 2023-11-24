@@ -7,8 +7,8 @@
 <section class="w3l-main-slider banner-slider position-relative" id="home">
     <div class="owl-one owl-carousel owl-theme">
         <div class="item">
-            <div class="slider-info banner-view banner-top1">
-                <div class="container">
+            <div class="slider-info banner-view banner-top1 mt-20 pt-5">
+                <div class="container mt-10">
                     <div class="banner-info header-hero-19">
                         <h5>Finance & Investment Company</h5>
                         <h3 class="title-hero-19">Trade and Invest with the best trading platform</h3>
@@ -58,7 +58,7 @@
       }
     ],
     "showSymbolLogo": true,
-    "colorTheme": "light",
+    "colorTheme": "dark",
     "isTransparent": false,
     "displayMode": "adaptive",
     "locale": "en"
@@ -262,7 +262,7 @@
     <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div>
     <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
     {
-    "colorTheme": "light",
+    "colorTheme": "dark",
     "dateRange": "12M",
     "showChart": true,
     "locale": "en",
@@ -421,7 +421,7 @@
     <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div>
     <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
     {
-    "colorTheme": "light",
+    "colorTheme": "dark",
     "dateRange": "12M",
     "showChart": true,
     "locale": "en",

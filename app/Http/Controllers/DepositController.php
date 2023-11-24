@@ -26,6 +26,7 @@ class DepositController extends Controller
        
        $deposit->amount = $formFields['amount'];
        $deposit->user_id = $formFields['user_id'];
+       $deposit->name = auth()->user()->firstname. " ".auth()->user()->lastname;
        $deposit->save();
        $lastInsertId = $deposit->id;
     
